@@ -8,3 +8,5 @@ Just say **"no!"** to Retina with retiNO! Makes Minecraft render at half resolut
 
 Download in [the releases section](https://github.com/juliand665/retiNO/releases) or on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/retino).
 
+Note: This mod <u>only works on macOS</u>, because there's an incredibly simple way to do what it does on there. There doesn't seem to be something like that on other platforms, but you can get pretty close with [Resolution Control](https://github.com/juliand665/Resolution-Control).
+
