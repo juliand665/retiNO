@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "retino.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "WindowHintsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

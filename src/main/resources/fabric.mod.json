@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "retino",
+	"version": "${version}",
+
+	"name": "retiNO",
+	"description": "Makes Minecraft render at half-resolution on Retina displays for improved performance.",
+	"authors": [
+		"juliand665"
+	],
+	"contact": {
+		"homepage": "https://dapprgames.com/",
+		"sources": "https://github.com/juliand665/retiNO",
+		"issues": "https://github.com/juliand665/retiNO/issues"
+	},
+
+	"license": "MIT",
+	"icon": "assets/retino/logo.png",
+
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"retino.RetinoMod"
+		]
+	},
+	"mixins": [
+		"retino.mixins.json"
+	],
+
+	"depends": {
+		"fabricloader": ">=0.4.0",
+		"fabric": "*"
+	},
+	
+	"custom": {
+		"modmenu:clientsideOnly": true
+	}
+}
