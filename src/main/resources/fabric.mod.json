@@ -18,11 +18,7 @@
 	"icon": "assets/retino/logo.png",
 
 	"environment": "client",
-	"entrypoints": {
-		"main": [
-			"retino.RetinoMod"
-		]
-	},
+	"entrypoints": {},
 	"mixins": [
 		"retino.mixins.json"
 	],
