@@ -1,19 +1,28 @@
 package retino.mixin;
 
-import com.mojang.blaze3d.opengl.GlBackend;
-import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-@Mixin(value = GlBackend.class)
+@Mixin(targets = "com.mojang.blaze3d.platform.Window")
 public abstract class GlBackendMixin {
-	@Inject(
-		at = @At("HEAD"),
-		method = "setWindowHints"
+	@ModifyArg(
+		method = "createWindow",
+		at = @At(
+			value = "INVOKE",
+			target = "Lcom/mojang/renderpearl/api/device/GpuBackend;createWindow(Ljava/lang/String;IIJ)J"
+		),
+		index = 3
 	)
-	private void adjustWindowHints(CallbackInfo callbackInfo) {
-		GLFW.glfwWindowHint(GLFW.GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW.GLFW_FALSE);
+	private long disableHighPixelDensity(long flags) {
+		try {
+			Class<?> sdlVideo = Class.forName("org.lwjgl.sdl.SDLVideo");
+			long highPixelDensity =
+				sdlVideo.getField("SDL_WINDOW_HIGH_PIXEL_DENSITY").getLong(null);
+
+			return flags & ~highPixelDensity;
+		} catch (ReflectiveOperationException e) {
+			return flags;
+		}
 	}
 }
